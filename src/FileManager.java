@@ -28,6 +28,8 @@ public class FileManager {
 		
 		
 		
+		
+		
 		assert LabelOrNot == 1 : "No class ";// ensure that C is present in this file
 		
 		
@@ -38,16 +40,26 @@ public class FileManager {
 			double[] attributes = new double[NumOfAttributes];
 			int classLabel = -1;
 			
+			int id= (int) scanner.nextDouble();
+			
 			//Read a whole line for a TrainRecord
 			for(int i = 0; i < NumOfAttributes; i ++){
-				attributes[i] = scanner.nextDouble();
+				double aux = scanner.nextDouble();
+				System.out.print(aux);System.out.println();
+				attributes[i] = aux;
 			}
 			
 			//Read classLabel
 			classLabel = (int) scanner.nextDouble();
 			assert classLabel != -1 : "Reading class label is wrong!";
+			/*System.out.println();
+			System.out.println();
+			System.out.print(scanner.nextDouble());
+			System.out.println();
+			System.exit(1);*/
 			
 			records[index] = new TrainRecord(attributes, classLabel);
+			records[index].id = id;
 			index ++;
 		}
 		
@@ -66,17 +78,23 @@ public class FileManager {
 		int LabelOrNot = scanner.nextInt();
 		scanner.nextLine();
 		
+		
+		
 		assert LabelOrNot == 1 : "No classLabel";
 		
 		TestRecord[] records = new TestRecord[NumOfSamples];
 		int index = 0;
 		while(scanner.hasNext()){
+			if(index == NumOfSamples) {break; }
 			double[] attributes = new double[NumOfAttributes];
 			int classLabel = -1;
+			int id= (int) scanner.nextDouble();
 			
 			//read a whole line for a TestRecord
 			for(int i = 0; i < NumOfAttributes; i ++){
-				attributes[i] = scanner.nextDouble();
+				double aux = scanner.nextDouble();
+				System.out.print(aux);System.out.println();
+				attributes[i] = aux;
 			}
 			
 			//read the true lable of a TestRecord which is later used for validation
@@ -84,6 +102,7 @@ public class FileManager {
 			assert classLabel != -1 : "Reading class label is wrong!";
 			
 			records[index] = new TestRecord(attributes, classLabel);
+			records[index].id = id;
 			index ++;
 		}
 		
@@ -114,6 +133,8 @@ public class FileManager {
 			bw.write(Integer.toString(tr.predictedLabel));
 			bw.write("---");
 			bw.write(Double.toString(tr.dist));
+			bw.write("---");
+			bw.write(Double.toString(tr.id));
 			
 			bw.newLine();
 		}

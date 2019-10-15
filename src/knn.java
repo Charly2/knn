@@ -10,29 +10,11 @@ public class knn {
 	
 	public static void main(String[] args){	
 		System.out.println("iris");
-		knn("iris_train.txt","iris_test.txt",1,2);
+		knn("iris_train.txt","iris_test.txt",10,2);
 		System.out.println();
 
 		
-		/*System.out.println("glass");
-		knn("glass_train.txt","glass_test.txt",1,0);
-		System.out.println();
 		
-		System.out.println("vowel");
-		knn("vowel_train.txt","vowel_test.txt",3,2);
-		System.out.println();
-		
-		System.out.println("vehicle");
-		knn("vehicle_train.txt","vehicle_test.txt",3,1);
-		System.out.println();
-		
-		System.out.println("letter");
-		knn("letter_train.txt","letter_test.txt",3,0);
-		System.out.println();
-		
-		System.out.println("DNA");
-		knn("dna_train.txt","dna_test.txt",5,2);
-		System.out.println();*/
 	}
 	
 	public static void knn(String trainingFile, String testFile, int K, int metricType){
